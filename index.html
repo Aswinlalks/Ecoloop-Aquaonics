@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aqua Monitor Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">AquaMonitor</div>
+      <div class="nav-links">
+        <a href="index.html" class="active"><i class="fas fa-dashboard"></i> Dashboard</a>
+       
+        <a href="stats.html"><i class="fas fa-edit"></i> Update Data</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header class="header">
+      <h1>Aquarium Monitoring Dashboard</h1>
+      <p>Real-time water quality metrics and analytics</p>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Temperature Card -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Temperature</h2>
+          <div class="card-icon">
+            <i class="fas fa-thermometer-half"></i>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="tempChart"></canvas>
+        </div>
+        <div class="current-value">
+          <span class="value-label">Current:</span>
+          <span class="value-number" id="currentTemp">-- °C</span>
+        </div>
+      </div>
+
+      <!-- pH Card -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">pH Level</h2>
+          <div class="card-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="phChart"></canvas>
+        </div>
+        <div class="current-value">
+          <span class="value-label">Current:</span>
+          <span class="value-number" id="currentPH">--</span>
+        </div>
+      </div>
+
+      <!-- Ammonia Card -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Ammonia (NH₃)</h2>
+          <div class="card-icon">
+            <i class="fas fa-skull-crossbones"></i>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="nh3Chart"></canvas>
+        </div>
+        <div class="current-value">
+          <span class="value-label">Current:</span>
+          <span class="value-number" id="currentNH3">-- ppm</span>
+        </div>
+      </div>
+
+      <!-- Combined Chart Card -->
+      <div class="card combined-chart">
+        <div class="card-header">
+          <h2 class="card-title">Water Quality Trends</h2>
+          <div class="card-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="combinedChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>AquaMonitor System • Last Updated: <span id="lastUpdateTime">--</span></p>
+  </footer>
+</body>
+</html>

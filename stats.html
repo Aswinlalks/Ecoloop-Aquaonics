@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Water Parameters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">AquaMonitor</div>
+      <div class="nav-links">
+        <a href="index.html"><i class="fas fa-dashboard"></i> Dashboard</a>
+       
+        <a href="update.html" class="active"><i class="fas fa-edit"></i> Update Data</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="auth-container">
+      
+      <!-- Login Screen -->
+      <div id="loginBox" class="auth-card">
+        <div class="auth-header">
+          <div class="auth-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h1 class="auth-title">Secure Access Required</h1>
+          <p class="auth-subtitle">Enter credentials to update water parameters</p>
+        </div>
+        
+        <div class="input-group">
+          <label for="password">
+            <i class="fas fa-key"></i> Admin Password
+          </label>
+          <input type="password" id="password" placeholder="Enter your admin password" autocomplete="off">
+          <div class="input-hint">
+            <i class="fas fa-info-circle"></i> Default password: fish123
+          </div>
+        </div>
+        
+        <button onclick="login()" class="btn btn-login">
+          <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+        </button>
+        
+        <div class="auth-footer">
+          <p><i class="fas fa-shield-alt"></i> Secure connection established</p>
+        </div>
+      </div>
+
+      <!-- Protected Content -->
+      <div id="protected" class="auth-card" style="display:none;">
+        <div class="auth-header">
+          <div class="auth-icon success">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <h1 class="auth-title">Update Water Parameters</h1>
+          <p class="auth-subtitle">Enter new pH and Ammonia values</p>
+        </div>
+
+        <div class="current-values">
+          <h3><i class="fas fa-clock"></i> Current Values</h3>
+          <div class="value-display">
+            <div class="value-item">
+              <div class="value-label">pH Level</div>
+              <div class="value-data" id="currentPhValue">--</div>
+            </div>
+            <div class="value-item">
+              <div class="value-label">Ammonia (NH₃)</div>
+              <div class="value-data" id="currentNh3Value">-- ppm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="update-form">
+          <h3><i class="fas fa-edit"></i> New Values</h3>
+          
+          <div class="form-grid">
+            <div class="input-group">
+              <label for="ph">
+                <i class="fas fa-tint"></i> pH Level
+                <span class="input-range">(6.5 - 8.5 recommended)</span>
+              </label>
+              <input type="number" id="ph" placeholder="Enter pH value" step="0.1" min="0" max="14">
+              <div class="range-indicator">
+                <span class="range-label">Acidic</span>
+                <div class="range-bar">
+                  <div class="range-fill" id="phRangeFill"></div>
+                </div>
+                <span class="range-label">Alkaline</span>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="nh3">
+                <i class="fas fa-skull-crossbones"></i> Ammonia (NH₃)
+                <span class="input-range">(0 - 0.5 ppm safe)</span>
+              </label>
+              <input type="number" id="nh3" placeholder="Enter NH₃ value" step="0.01" min="0" max="10">
+              <div class="range-indicator">
+                <span class="range-label">Safe</span>
+                <div class="range-bar">
+                  <div class="range-fill" id="nh3RangeFill"></div>
+                </div>
+                <span class="range-label">Danger</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-notes">
+            <div class="note warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div>
+                <strong>Warning:</strong> Values outside recommended ranges may harm aquatic life.
+              </div>
+            </div>
+            <div class="note info">
+              <i class="fas fa-info-circle"></i>
+              <div>
+                <strong>Note:</strong> Changes will be visible on dashboard immediately.
+              </div>
+            </div>
+          </div>
+
+          <button onclick="sendUpdate()" class="btn btn-update">
+            <i class="fas fa-paper-plane"></i> Submit Updates
+          </button>
+
+          <div id="status" class="status-message"></div>
+
+          <div class="form-footer">
+            <button onclick="logout()" class="btn btn-logout">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+            <button onclick="loadCurrentValues()" class="btn btn-secondary">
+              <i class="fas fa-sync"></i> Refresh Values
+            </button>
+          </div>
+        </div>
+
+        <div class="update-history">
+          <h3><i class="fas fa-history"></i> Recent Updates</h3>
+          <div class="history-list" id="updateHistory">
+            <!-- History items will be added here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>AquaMonitor Update Console • Secure Admin Access</p>
+  </footer>
+</body>
+</html>
